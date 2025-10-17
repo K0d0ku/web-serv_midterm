@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35828.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KuroApi", "KuroApi.csproj", "{9CC4DF5D-69E1-4274-BFB1-AB230BEE4E50}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CC4DF5D-69E1-4274-BFB1-AB230BEE4E50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CC4DF5D-69E1-4274-BFB1-AB230BEE4E50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CC4DF5D-69E1-4274-BFB1-AB230BEE4E50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CC4DF5D-69E1-4274-BFB1-AB230BEE4E50}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7619F483-ACC1-4F9F-8D2B-8EF2EA6F2059}
+	EndGlobalSection
+EndGlobal
