@@ -76,7 +76,7 @@ CRUD
             return Ok(customers);
         }
 ```
-![Crud - Read(All)]()  
+![Crud - Read(All)](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/ApiTestCrud2.png)  
 
 [Read (ID) - AuthController.cs](https://github.com/K0d0ku/web-serv_midterm/blob/74ce5e44ff67db98236399b36b331dac2b20ce4a/Controllers/AuthController.cs#L99-L113)  
 ```
@@ -96,7 +96,7 @@ CRUD
             return Ok(customer);
         }
 ```
-![Crud - Read(Id)]()  
+![Crud - Read(Id)](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/ApiTestCrud2ByID.png)  
 
 [Update - AuthController.cs](https://github.com/K0d0ku/web-serv_midterm/blob/74ce5e44ff67db98236399b36b331dac2b20ce4a/Controllers/AuthController.cs#L115-L136)  
 ```
@@ -123,6 +123,10 @@ CRUD
             return Ok(new { Message = "Customer updated successfully" });
         }
 ```
+**Before**  
+![Crud - Update](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/ApiTestCrud3before.png)  
+![Crud - Update]()  
+![Crud - Update]()  
 ![Crud - Update]()  
 
 [Delete - AuthController.cs](https://github.com/K0d0ku/web-serv_midterm/blob/74ce5e44ff67db98236399b36b331dac2b20ce4a/Controllers/AuthController.cs#L138-L151)  
