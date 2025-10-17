@@ -1,19 +1,21 @@
 # web-service development midterm task
-repo created for my midterm for my subject in - Web services development
+##repo created for my midterm for my subject in - Web services development
 
 it is unknown if the project will be continued or abandoned if there wont be any further tasks after midterm but either way will be archived after the semester 
 
-the process
+## the process
+is in process of making the .md
 
-the project is made with the following requirements:
+## the project is made with the following requirements:
+![requirements](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/requirements.png)
 
-and used the following tools and packages:
+## and used the following tools and packages:
 
 - net9.0
 - PostGres17, Pgadmin, DataGrip(optional)
 - Postman
 
-NuGet packages used:
+## NuGet packages used:
 1. Core & EF Core / Database
 
 | Package                                             | Purpose                                    |
