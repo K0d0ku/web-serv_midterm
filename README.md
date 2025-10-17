@@ -3,9 +3,20 @@ repo created for my midterm for my subject in - Web services development
 
 it is unknown if the project will be continued or abandoned if there wont be any further tasks after midterm but either way will be archived after the semester 
 
+the process
+
+the postman test data
+
+>[The Postman Test Data]([https://raw.githubusercontent.com/user/repo/branch/file.txt](https://k0d0ku-9187943.postman.co/workspace/15c82ff0-6925-4f2d-8a93-bf09e1252abf/collection/49340916-3aa8bd97-f8b9-4b61-b1a8-19293639d6c3?action=share&source=copy-link&creator=49340916))
+
+
 the project is made with the following requirements:
 
 and used the following tools and packages:
+
+- net9.0
+- PostGres17, Pgadmin, DataGrip(optional)
+- Postman
 
 NuGet packages used:
 1. Core & EF Core / Database
