@@ -1,0 +1,426 @@
+2025-10-17 01:09:48.465 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/swagger/index.html - null null
+2025-10-17 01:09:48.512 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/swagger/index.html - 200 null text/html;charset=utf-8 50.5768ms
+2025-10-17 01:09:48.745 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-17 01:09:48.775 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/_vs/browserLink - null null
+2025-10-17 01:09:48.812 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 66.4843ms
+2025-10-17 01:09:48.868 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 93.5981ms
+2025-10-17 01:09:49.278 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/swagger/v1/swagger.json - null null
+2025-10-17 01:09:49.341 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 63.4073ms
+2025-10-17 01:10:09.822 +05:00 [INF] Request starting HTTP/1.1 GET https://localhost:5255/api/Auth/Customers/3 - null null
+2025-10-17 01:10:09.845 +05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '10/16/2025 6:01:13 PM', Current time (UTC): '10/16/2025 8:10:09 PM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-10-17 01:10:09.914 +05:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '10/16/2025 6:01:13 PM', Current time (UTC): '10/16/2025 8:10:09 PM'.
+2025-10-17 01:10:09.918 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-10-17 01:10:09.923 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-10-17 01:10:09.926 +05:00 [INF] Request finished HTTP/1.1 GET https://localhost:5255/api/Auth/Customers/3 - 401 0 null 103.4316ms
+2025-10-17 01:10:17.308 +05:00 [INF] Request starting HTTP/1.1 GET https://localhost:5255/api/Auth/Customers/2 - null null
+2025-10-17 01:10:17.313 +05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '10/16/2025 6:01:13 PM', Current time (UTC): '10/16/2025 8:10:17 PM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-10-17 01:10:17.322 +05:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '10/16/2025 6:01:13 PM', Current time (UTC): '10/16/2025 8:10:17 PM'.
+2025-10-17 01:10:17.324 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-10-17 01:10:17.327 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-10-17 01:10:17.330 +05:00 [INF] Request finished HTTP/1.1 GET https://localhost:5255/api/Auth/Customers/2 - 401 0 null 21.2788ms
+2025-10-17 01:11:26.122 +05:00 [INF] Request starting HTTP/1.1 POST https://localhost:5255/api/Auth/login - application/json 91
+2025-10-17 01:11:26.128 +05:00 [INF] Executing endpoint 'KuroApi.Controllers.AuthController.Login (KuroApi)'
+2025-10-17 01:11:26.130 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(KuroApi.Models.Customer) on controller KuroApi.Controllers.AuthController (KuroApi).
+2025-10-17 01:11:26.274 +05:00 [INF] Executed DbCommand (38ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."Email", c."Nickname", c."Password", c."Role"
+FROM "Customers" AS c
+2025-10-17 01:11:26.281 +05:00 [INF] Login successful for email dumdum@example.com
+2025-10-17 01:11:26.283 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-17 01:11:26.288 +05:00 [INF] Executed action KuroApi.Controllers.AuthController.Login (KuroApi) in 154.2109ms
+2025-10-17 01:11:26.292 +05:00 [INF] Executed endpoint 'KuroApi.Controllers.AuthController.Login (KuroApi)'
+2025-10-17 01:11:26.295 +05:00 [INF] Request finished HTTP/1.1 POST https://localhost:5255/api/Auth/login - 200 null application/json; charset=utf-8 172.9677ms
+2025-10-17 01:11:43.980 +05:00 [INF] Request starting HTTP/1.1 GET https://localhost:5255/api/Auth/Customers/ - null null
+2025-10-17 01:11:43.984 +05:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-10-17 01:11:43.987 +05:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-17 01:11:43.990 +05:00 [INF] Request finished HTTP/1.1 GET https://localhost:5255/api/Auth/Customers/ - 403 0 null 10.7361ms
+2025-10-17 01:12:03.301 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5255/api/Auth/login - application/json 103
+2025-10-17 01:12:03.307 +05:00 [INF] Executing endpoint 'KuroApi.Controllers.AuthController.Login (KuroApi)'
+2025-10-17 01:12:03.309 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(KuroApi.Models.Customer) on controller KuroApi.Controllers.AuthController (KuroApi).
+2025-10-17 01:12:03.321 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."Email", c."Nickname", c."Password", c."Role"
+FROM "Customers" AS c
+2025-10-17 01:12:03.329 +05:00 [INF] Login successful for email admin@example.com
+2025-10-17 01:12:03.331 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-17 01:12:03.337 +05:00 [INF] Executed action KuroApi.Controllers.AuthController.Login (KuroApi) in 24.0554ms
+2025-10-17 01:12:03.343 +05:00 [INF] Executed endpoint 'KuroApi.Controllers.AuthController.Login (KuroApi)'
+2025-10-17 01:12:03.345 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5255/api/Auth/login - 200 null application/json; charset=utf-8 44.7923ms
+2025-10-17 01:12:52.287 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/api/Auth/customers - null null
+2025-10-17 01:12:52.293 +05:00 [INF] Executing endpoint 'KuroApi.Controllers.AuthController.GetAllCustomers (KuroApi)'
+2025-10-17 01:12:52.309 +05:00 [INF] Route matched with {action = "GetAllCustomers", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllCustomers() on controller KuroApi.Controllers.AuthController (KuroApi).
+2025-10-17 01:12:52.319 +05:00 [INF] Fetching all customers
+2025-10-17 01:12:52.324 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."Email", c."Nickname", c."Password", c."Role"
+FROM "Customers" AS c
+2025-10-17 01:12:52.329 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[KuroApi.Models.Customer, KuroApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 01:12:52.336 +05:00 [INF] Executed action KuroApi.Controllers.AuthController.GetAllCustomers (KuroApi) in 18.4114ms
+2025-10-17 01:12:52.338 +05:00 [INF] Executed endpoint 'KuroApi.Controllers.AuthController.GetAllCustomers (KuroApi)'
+2025-10-17 01:12:52.345 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/api/Auth/customers - 200 null application/json; charset=utf-8 58.0867ms
+2025-10-17 01:13:34.606 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/swagger/index.html - null null
+2025-10-17 01:13:34.635 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/swagger/index.html - 200 null text/html;charset=utf-8 29.6055ms
+2025-10-17 01:13:34.872 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-17 01:13:34.875 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/_vs/browserLink - null null
+2025-10-17 01:13:34.881 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 8.5599ms
+2025-10-17 01:13:34.914 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 38.969ms
+2025-10-17 01:13:35.277 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/swagger/v1/swagger.json - null null
+2025-10-17 01:13:35.313 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 35.4441ms
+2025-10-17 01:13:56.632 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5255/api/Auth/login - application/json 154
+2025-10-17 01:13:56.637 +05:00 [INF] Executing endpoint 'KuroApi.Controllers.AuthController.Login (KuroApi)'
+2025-10-17 01:13:56.639 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(KuroApi.Models.Customer) on controller KuroApi.Controllers.AuthController (KuroApi).
+2025-10-17 01:13:56.646 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."Email", c."Nickname", c."Password", c."Role"
+FROM "Customers" AS c
+2025-10-17 01:13:56.653 +05:00 [INF] Login successful for email dumdum@example.com
+2025-10-17 01:13:56.654 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-17 01:13:56.658 +05:00 [INF] Executed action KuroApi.Controllers.AuthController.Login (KuroApi) in 14.2761ms
+2025-10-17 01:13:56.661 +05:00 [INF] Executed endpoint 'KuroApi.Controllers.AuthController.Login (KuroApi)'
+2025-10-17 01:13:56.663 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5255/api/Auth/login - 200 null application/json; charset=utf-8 31.3999ms
+2025-10-17 01:14:27.640 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/api/Auth/customers - null null
+2025-10-17 01:14:27.648 +05:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-10-17 01:14:27.650 +05:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-17 01:14:27.652 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/api/Auth/customers - 403 0 null 17.7851ms
+2025-10-17 01:14:35.954 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/api/Auth/customers/2 - null null
+2025-10-17 01:14:35.964 +05:00 [INF] Executing endpoint 'KuroApi.Controllers.AuthController.GetCustomerById (KuroApi)'
+2025-10-17 01:14:35.967 +05:00 [INF] Route matched with {action = "GetCustomerById", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetCustomerById(Int32) on controller KuroApi.Controllers.AuthController (KuroApi).
+2025-10-17 01:14:35.991 +05:00 [INF] Executed DbCommand (16ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."Email", c."Nickname", c."Password", c."Role"
+FROM "Customers" AS c
+WHERE c."Id" = @__p_0
+LIMIT 1
+2025-10-17 01:14:35.999 +05:00 [INF] Executing OkObjectResult, writing value of type 'KuroApi.Models.Customer'.
+2025-10-17 01:14:36.005 +05:00 [INF] Executed action KuroApi.Controllers.AuthController.GetCustomerById (KuroApi) in 33.6698ms
+2025-10-17 01:14:36.008 +05:00 [INF] Executed endpoint 'KuroApi.Controllers.AuthController.GetCustomerById (KuroApi)'
+2025-10-17 01:14:36.011 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/api/Auth/customers/2 - 200 null application/json; charset=utf-8 56.88ms
+2025-10-17 04:08:44.200 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/swagger/index.html - null null
+2025-10-17 04:08:44.239 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/swagger/index.html - 200 null text/html;charset=utf-8 39.7289ms
+2025-10-17 04:08:44.578 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-17 04:08:44.631 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/_vs/browserLink - null null
+2025-10-17 04:08:44.661 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 82.8576ms
+2025-10-17 04:08:44.724 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 93.4229ms
+2025-10-17 04:08:45.164 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/swagger/v1/swagger.json - null null
+2025-10-17 04:08:45.229 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 65.1691ms
+2025-10-17 04:08:58.134 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5255/api/Auth/login - application/json 103
+2025-10-17 04:08:58.152 +05:00 [INF] Executing endpoint 'KuroApi.Controllers.AuthController.Login (KuroApi)'
+2025-10-17 04:08:58.160 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(KuroApi.Models.Customer) on controller KuroApi.Controllers.AuthController (KuroApi).
+2025-10-17 04:08:58.319 +05:00 [INF] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."Email", c."Nickname", c."Password", c."Role"
+FROM "Customers" AS c
+2025-10-17 04:08:58.325 +05:00 [INF] Login successful for email admin@example.com
+2025-10-17 04:08:58.328 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-17 04:08:58.331 +05:00 [INF] Executed action KuroApi.Controllers.AuthController.Login (KuroApi) in 165.2427ms
+2025-10-17 04:08:58.333 +05:00 [INF] Executed endpoint 'KuroApi.Controllers.AuthController.Login (KuroApi)'
+2025-10-17 04:08:58.335 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5255/api/Auth/login - 200 null application/json; charset=utf-8 200.8851ms
+2025-10-17 04:09:42.090 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/api/Auth/customers - null null
+2025-10-17 04:09:42.096 +05:00 [INF] Executing endpoint 'KuroApi.Controllers.AuthController.GetAllCustomers (KuroApi)'
+2025-10-17 04:09:42.100 +05:00 [INF] Route matched with {action = "GetAllCustomers", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllCustomers() on controller KuroApi.Controllers.AuthController (KuroApi).
+2025-10-17 04:09:42.106 +05:00 [INF] Fetching all customers
+2025-10-17 04:09:42.110 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."Email", c."Nickname", c."Password", c."Role"
+FROM "Customers" AS c
+2025-10-17 04:09:42.118 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[KuroApi.Models.Customer, KuroApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 04:09:42.122 +05:00 [INF] Executed action KuroApi.Controllers.AuthController.GetAllCustomers (KuroApi) in 15.9527ms
+2025-10-17 04:09:42.124 +05:00 [INF] Executed endpoint 'KuroApi.Controllers.AuthController.GetAllCustomers (KuroApi)'
+2025-10-17 04:09:42.130 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/api/Auth/customers - 200 null application/json; charset=utf-8 40.4576ms
+2025-10-17 04:09:53.249 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/api/Auth/customers/3 - null null
+2025-10-17 04:09:53.254 +05:00 [INF] Executing endpoint 'KuroApi.Controllers.AuthController.GetCustomerById (KuroApi)'
+2025-10-17 04:09:53.261 +05:00 [INF] Route matched with {action = "GetCustomerById", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetCustomerById(Int32) on controller KuroApi.Controllers.AuthController (KuroApi).
+2025-10-17 04:09:53.273 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."Email", c."Nickname", c."Password", c."Role"
+FROM "Customers" AS c
+WHERE c."Id" = @__p_0
+LIMIT 1
+2025-10-17 04:09:53.279 +05:00 [INF] Executing OkObjectResult, writing value of type 'KuroApi.Models.Customer'.
+2025-10-17 04:09:53.281 +05:00 [INF] Executed action KuroApi.Controllers.AuthController.GetCustomerById (KuroApi) in 16.3808ms
+2025-10-17 04:09:53.292 +05:00 [INF] Executed endpoint 'KuroApi.Controllers.AuthController.GetCustomerById (KuroApi)'
+2025-10-17 04:09:53.294 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/api/Auth/customers/3 - 200 null application/json; charset=utf-8 45.1217ms
+2025-10-17 04:10:35.747 +05:00 [INF] Request starting HTTP/2 PUT https://localhost:5255/api/Auth/customers/3 - application/json 119
+2025-10-17 04:10:35.754 +05:00 [INF] Executing endpoint 'KuroApi.Controllers.AuthController.UpdateCustomer (KuroApi)'
+2025-10-17 04:10:35.763 +05:00 [INF] Route matched with {action = "UpdateCustomer", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult UpdateCustomer(Int32, KuroApi.Models.Customer) on controller KuroApi.Controllers.AuthController (KuroApi).
+2025-10-17 04:10:35.775 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."Email", c."Nickname", c."Password", c."Role"
+FROM "Customers" AS c
+WHERE c."Id" = @__p_0
+LIMIT 1
+2025-10-17 04:10:35.924 +05:00 [INF] Executed DbCommand (13ms) [Parameters=[@p4='?' (DbType = Int32), @p0='?', @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Customers" SET "Email" = @p0, "Nickname" = @p1, "Password" = @p2, "Role" = @p3
+WHERE "Id" = @p4;
+2025-10-17 04:10:35.936 +05:00 [INF] Customer with ID 3 updated successfully
+2025-10-17 04:10:35.939 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-17 04:10:35.951 +05:00 [INF] Executed action KuroApi.Controllers.AuthController.UpdateCustomer (KuroApi) in 181.8377ms
+2025-10-17 04:10:35.953 +05:00 [INF] Executed endpoint 'KuroApi.Controllers.AuthController.UpdateCustomer (KuroApi)'
+2025-10-17 04:10:35.956 +05:00 [INF] Request finished HTTP/2 PUT https://localhost:5255/api/Auth/customers/3 - 200 null application/json; charset=utf-8 209.3235ms
+2025-10-17 04:11:18.094 +05:00 [INF] Request starting HTTP/2 DELETE https://localhost:5255/api/Auth/customers/2 - null null
+2025-10-17 04:11:18.108 +05:00 [INF] Executing endpoint 'KuroApi.Controllers.AuthController.DeleteCustomer (KuroApi)'
+2025-10-17 04:11:18.114 +05:00 [INF] Route matched with {action = "DeleteCustomer", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult DeleteCustomer(Int32) on controller KuroApi.Controllers.AuthController (KuroApi).
+2025-10-17 04:11:18.120 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."Email", c."Nickname", c."Password", c."Role"
+FROM "Customers" AS c
+WHERE c."Id" = @__p_0
+LIMIT 1
+2025-10-17 04:11:18.163 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Customers"
+WHERE "Id" = @p0;
+2025-10-17 04:11:18.172 +05:00 [INF] Customer with ID 2 deleted successfully
+2025-10-17 04:11:18.174 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-17 04:11:18.178 +05:00 [INF] Executed action KuroApi.Controllers.AuthController.DeleteCustomer (KuroApi) in 60.7395ms
+2025-10-17 04:11:18.180 +05:00 [INF] Executed endpoint 'KuroApi.Controllers.AuthController.DeleteCustomer (KuroApi)'
+2025-10-17 04:11:18.183 +05:00 [INF] Request finished HTTP/2 DELETE https://localhost:5255/api/Auth/customers/2 - 200 null application/json; charset=utf-8 88.8605ms
+2025-10-17 04:16:38.522 +05:00 [INF] Executed DbCommand (104ms) [Parameters=[@__normalizedName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1
+2025-10-17 04:16:38.748 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1
+2025-10-17 04:16:38.776 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Customers" AS c
+    WHERE c."Email" = @__email_0)
+2025-10-17 04:16:39.098 +05:00 [INF] User profile is available. Using 'C:\Users\Bekal\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-17 04:16:39.905 +05:00 [INF] Now listening on: https://localhost:5255
+2025-10-17 04:16:39.907 +05:00 [INF] Now listening on: http://localhost:7065
+2025-10-17 04:16:40.002 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-17 04:16:40.004 +05:00 [INF] Hosting environment: Development
+2025-10-17 04:16:40.006 +05:00 [INF] Content root path: C:\Users\Bekal\Documents\my_own_documents\vs studio lol\uni\web-serv\midterm1\KuroApi
+2025-10-17 04:16:42.611 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/swagger/index.html - null null
+2025-10-17 04:16:42.891 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/swagger/index.html - 200 null text/html;charset=utf-8 288.6022ms
+2025-10-17 04:16:43.162 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-17 04:16:43.177 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/_vs/browserLink - null null
+2025-10-17 04:16:43.238 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 76.213ms
+2025-10-17 04:16:43.338 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 160.7588ms
+2025-10-17 04:16:43.675 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/swagger/v1/swagger.json - null null
+2025-10-17 04:16:43.732 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 56.6912ms
+2025-10-17 04:17:04.022 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/api/Auth/customers - null null
+2025-10-17 04:17:04.195 +05:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-10-17 04:17:04.206 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-10-17 04:17:04.209 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/api/Auth/customers - 401 0 null 186.105ms
+2025-10-17 04:17:35.663 +05:00 [INF] Request starting HTTP/1.1 GET https://localhost:5255/api/Auth/Customers/ - null null
+2025-10-17 04:17:35.795 +05:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '10/16/2025 9:11:26 PM', Current time (UTC): '10/16/2025 11:17:35 PM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2025-10-17 04:17:35.879 +05:00 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '10/16/2025 9:11:26 PM', Current time (UTC): '10/16/2025 11:17:35 PM'.
+2025-10-17 04:17:35.883 +05:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-10-17 04:17:35.888 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-10-17 04:17:35.915 +05:00 [INF] Request finished HTTP/1.1 GET https://localhost:5255/api/Auth/Customers/ - 401 0 null 252.0437ms
+2025-10-17 04:17:43.871 +05:00 [INF] Request starting HTTP/1.1 GET https://localhost:5255/api/Auth/Customers/ - null null
+2025-10-17 04:17:43.958 +05:00 [INF] Executing endpoint 'KuroApi.Controllers.AuthController.GetAllCustomers (KuroApi)'
+2025-10-17 04:17:43.992 +05:00 [INF] Route matched with {action = "GetAllCustomers", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllCustomers() on controller KuroApi.Controllers.AuthController (KuroApi).
+2025-10-17 04:17:44.004 +05:00 [INF] Fetching all customers
+2025-10-17 04:17:44.136 +05:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."Email", c."Nickname", c."Password", c."Role"
+FROM "Customers" AS c
+2025-10-17 04:17:44.176 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[KuroApi.Models.Customer, KuroApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 04:17:44.193 +05:00 [INF] Executed action KuroApi.Controllers.AuthController.GetAllCustomers (KuroApi) in 192.8512ms
+2025-10-17 04:17:44.195 +05:00 [INF] Executed endpoint 'KuroApi.Controllers.AuthController.GetAllCustomers (KuroApi)'
+2025-10-17 04:17:44.205 +05:00 [INF] Request finished HTTP/1.1 GET https://localhost:5255/api/Auth/Customers/ - 200 null application/json; charset=utf-8 334.3149ms
+2025-10-17 04:18:04.351 +05:00 [INF] Request starting HTTP/2 POST https://localhost:5255/api/Auth/login - application/json 153
+2025-10-17 04:18:04.356 +05:00 [INF] Executing endpoint 'KuroApi.Controllers.AuthController.Login (KuroApi)'
+2025-10-17 04:18:04.375 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(KuroApi.Models.Customer) on controller KuroApi.Controllers.AuthController (KuroApi).
+2025-10-17 04:18:04.466 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."Email", c."Nickname", c."Password", c."Role"
+FROM "Customers" AS c
+2025-10-17 04:18:04.483 +05:00 [INF] Login successful for email kuro@example.com
+2025-10-17 04:18:04.486 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-17 04:18:04.501 +05:00 [INF] Executed action KuroApi.Controllers.AuthController.Login (KuroApi) in 118.131ms
+2025-10-17 04:18:04.504 +05:00 [INF] Executed endpoint 'KuroApi.Controllers.AuthController.Login (KuroApi)'
+2025-10-17 04:18:04.507 +05:00 [INF] Request finished HTTP/2 POST https://localhost:5255/api/Auth/login - 200 null application/json; charset=utf-8 155.8399ms
+2025-10-17 04:18:08.384 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/api/Auth/customers - null null
+2025-10-17 04:18:08.390 +05:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-10-17 04:18:08.394 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-10-17 04:18:08.399 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/api/Auth/customers - 401 0 null 14.5283ms
+2025-10-17 04:18:22.786 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/api/Auth/customers/4 - null null
+2025-10-17 04:18:22.793 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-10-17 04:18:22.798 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-10-17 04:18:22.801 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/api/Auth/customers/4 - 401 0 null 14.7616ms
+2025-10-17 04:18:31.095 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/api/Auth/customers/3 - null null
+2025-10-17 04:18:31.109 +05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-10-17 04:18:31.113 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-10-17 04:18:31.116 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/api/Auth/customers/3 - 401 0 null 21.0883ms
+2025-10-17 04:54:29.149 +05:00 [INF] Executed DbCommand (116ms) [Parameters=[@__normalizedName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1
+2025-10-17 04:54:29.439 +05:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."ConcurrencyStamp", a."Name", a."NormalizedName"
+FROM "AspNetRoles" AS a
+WHERE a."NormalizedName" = @__normalizedName_0
+LIMIT 1
+2025-10-17 04:54:29.468 +05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Customers" AS c
+    WHERE c."Email" = @__email_0)
+2025-10-17 04:54:30.101 +05:00 [INF] User profile is available. Using 'C:\Users\Bekal\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-10-17 04:54:31.392 +05:00 [INF] Now listening on: https://localhost:5255
+2025-10-17 04:54:31.394 +05:00 [INF] Now listening on: http://localhost:7065
+2025-10-17 04:54:31.562 +05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-10-17 04:54:31.574 +05:00 [INF] Hosting environment: Development
+2025-10-17 04:54:31.847 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/swagger/index.html - null null
+2025-10-17 04:54:31.856 +05:00 [INF] Content root path: C:\Users\Bekal\Documents\my_own_documents\vs studio lol\uni\web-serv\midterm1\KuroApi
+2025-10-17 04:54:32.781 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/swagger/index.html - 200 null text/html;charset=utf-8 949.4124ms
+2025-10-17 04:54:33.010 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/_vs/browserLink - null null
+2025-10-17 04:54:33.010 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/_framework/aspnetcore-browser-refresh.js - null null
+2025-10-17 04:54:33.051 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/_framework/aspnetcore-browser-refresh.js - 200 16499 application/javascript; charset=utf-8 40.6914ms
+2025-10-17 04:54:33.241 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/_vs/browserLink - 200 null text/javascript; charset=UTF-8 230.7781ms
+2025-10-17 04:54:33.393 +05:00 [INF] Request starting HTTP/2 GET https://localhost:5255/swagger/v1/swagger.json - null null
+2025-10-17 04:54:33.439 +05:00 [INF] Request finished HTTP/2 GET https://localhost:5255/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 46.6161ms
+2025-10-17 04:56:39.872 +05:00 [INF] Request starting HTTP/1.1 POST https://localhost:5255/api/Auth/register - application/json 86
+2025-10-17 04:56:40.012 +05:00 [INF] Executing endpoint 'KuroApi.Controllers.AuthController.Register (KuroApi)'
+2025-10-17 04:56:40.042 +05:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Register(KuroApi.Models.Customer) on controller KuroApi.Controllers.AuthController (KuroApi).
+2025-10-17 04:56:40.185 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Customers" AS c
+    WHERE c."Email" = @__email_0)
+2025-10-17 04:56:40.369 +05:00 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Customers" ("Email", "Nickname", "Password", "Role")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "Id";
+2025-10-17 04:56:40.410 +05:00 [INF] Customer registered successfully: 5
+2025-10-17 04:56:40.422 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-17 04:56:40.441 +05:00 [INF] Executed action KuroApi.Controllers.AuthController.Register (KuroApi) in 388.9171ms
+2025-10-17 04:56:40.443 +05:00 [INF] Executed endpoint 'KuroApi.Controllers.AuthController.Register (KuroApi)'
+2025-10-17 04:56:40.454 +05:00 [INF] Request finished HTTP/1.1 POST https://localhost:5255/api/Auth/register - 200 null application/json; charset=utf-8 581.3557ms
+2025-10-17 04:58:10.076 +05:00 [INF] Request starting HTTP/1.1 POST https://localhost:5255/api/Auth/register - application/json 84
+2025-10-17 04:58:10.083 +05:00 [INF] Executing endpoint 'KuroApi.Controllers.AuthController.Register (KuroApi)'
+2025-10-17 04:58:10.085 +05:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Register(KuroApi.Models.Customer) on controller KuroApi.Controllers.AuthController (KuroApi).
+2025-10-17 04:58:10.115 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Customers" AS c
+    WHERE c."Email" = @__email_0)
+2025-10-17 04:58:10.125 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Customers" ("Email", "Nickname", "Password", "Role")
+VALUES (@p0, @p1, @p2, @p3)
+RETURNING "Id";
+2025-10-17 04:58:10.129 +05:00 [INF] Customer registered successfully: 6
+2025-10-17 04:58:10.131 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-17 04:58:10.135 +05:00 [INF] Executed action KuroApi.Controllers.AuthController.Register (KuroApi) in 46.0417ms
+2025-10-17 04:58:10.137 +05:00 [INF] Executed endpoint 'KuroApi.Controllers.AuthController.Register (KuroApi)'
+2025-10-17 04:58:10.141 +05:00 [INF] Request finished HTTP/1.1 POST https://localhost:5255/api/Auth/register - 200 null application/json; charset=utf-8 64.6948ms
+2025-10-17 04:59:28.834 +05:00 [INF] Request starting HTTP/1.1 POST https://localhost:5255/api/Auth/login - application/json 84
+2025-10-17 04:59:28.842 +05:00 [INF] Executing endpoint 'KuroApi.Controllers.AuthController.Login (KuroApi)'
+2025-10-17 04:59:28.850 +05:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(KuroApi.Models.Customer) on controller KuroApi.Controllers.AuthController (KuroApi).
+2025-10-17 04:59:28.874 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."Email", c."Nickname", c."Password", c."Role"
+FROM "Customers" AS c
+2025-10-17 04:59:28.940 +05:00 [INF] Login successful for email accN@example.com
+2025-10-17 04:59:28.946 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType2`3[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.DateTime, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-17 04:59:28.969 +05:00 [INF] Executed action KuroApi.Controllers.AuthController.Login (KuroApi) in 116.1295ms
+2025-10-17 04:59:28.972 +05:00 [INF] Executed endpoint 'KuroApi.Controllers.AuthController.Login (KuroApi)'
+2025-10-17 04:59:28.974 +05:00 [INF] Request finished HTTP/1.1 POST https://localhost:5255/api/Auth/login - 200 null application/json; charset=utf-8 140.0537ms
+2025-10-17 05:03:10.083 +05:00 [INF] Request starting HTTP/1.1 PUT https://localhost:5255/api/Auth/Customers/5 - application/json 93
+2025-10-17 05:03:10.196 +05:00 [INF] Executing endpoint 'KuroApi.Controllers.AuthController.UpdateCustomer (KuroApi)'
+2025-10-17 05:03:10.203 +05:00 [INF] Route matched with {action = "UpdateCustomer", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult UpdateCustomer(Int32, KuroApi.Models.Customer) on controller KuroApi.Controllers.AuthController (KuroApi).
+2025-10-17 05:03:10.347 +05:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."Email", c."Nickname", c."Password", c."Role"
+FROM "Customers" AS c
+WHERE c."Id" = @__p_0
+LIMIT 1
+2025-10-17 05:03:10.371 +05:00 [INF] Executed DbCommand (12ms) [Parameters=[@p4='?' (DbType = Int32), @p0='?', @p1='?', @p2='?', @p3='?'], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Customers" SET "Email" = @p0, "Nickname" = @p1, "Password" = @p2, "Role" = @p3
+WHERE "Id" = @p4;
+2025-10-17 05:03:10.378 +05:00 [INF] Customer with ID 5 updated successfully
+2025-10-17 05:03:10.380 +05:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-10-17 05:03:10.387 +05:00 [INF] Executed action KuroApi.Controllers.AuthController.UpdateCustomer (KuroApi) in 179.4225ms
+2025-10-17 05:03:10.392 +05:00 [INF] Executed endpoint 'KuroApi.Controllers.AuthController.UpdateCustomer (KuroApi)'
+2025-10-17 05:03:10.395 +05:00 [INF] Request finished HTTP/1.1 PUT https://localhost:5255/api/Auth/Customers/5 - 200 null application/json; charset=utf-8 311.5607ms
+2025-10-17 05:03:55.763 +05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:5255/api/auth/customers/5 - null null
+2025-10-17 05:03:55.774 +05:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-10-17 05:03:55.781 +05:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-17 05:03:55.783 +05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:5255/api/auth/customers/5 - 403 0 null 20.0072ms
+2025-10-17 05:04:08.923 +05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:5255/api/auth/customers/5 - null null
+2025-10-17 05:04:08.930 +05:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-10-17 05:04:08.933 +05:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-17 05:04:08.936 +05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:5255/api/auth/customers/5 - 403 0 null 13.134ms
+2025-10-17 05:04:43.801 +05:00 [INF] Request starting HTTP/1.1 GET https://localhost:5255/api/Auth/Customers/ - null null
+2025-10-17 05:04:43.811 +05:00 [INF] Executing endpoint 'KuroApi.Controllers.AuthController.GetAllCustomers (KuroApi)'
+2025-10-17 05:04:43.817 +05:00 [INF] Route matched with {action = "GetAllCustomers", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllCustomers() on controller KuroApi.Controllers.AuthController (KuroApi).
+2025-10-17 05:04:43.823 +05:00 [INF] Fetching all customers
+2025-10-17 05:04:43.827 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."Email", c."Nickname", c."Password", c."Role"
+FROM "Customers" AS c
+2025-10-17 05:04:43.833 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[KuroApi.Models.Customer, KuroApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-10-17 05:04:43.839 +05:00 [INF] Executed action KuroApi.Controllers.AuthController.GetAllCustomers (KuroApi) in 16.4206ms
+2025-10-17 05:04:43.841 +05:00 [INF] Executed endpoint 'KuroApi.Controllers.AuthController.GetAllCustomers (KuroApi)'
+2025-10-17 05:04:43.843 +05:00 [INF] Request finished HTTP/1.1 GET https://localhost:5255/api/Auth/Customers/ - 200 null application/json; charset=utf-8 41.8505ms
+2025-10-17 05:04:51.110 +05:00 [INF] Request starting HTTP/1.1 GET https://localhost:5255/api/Auth/Customers/ - null null
+2025-10-17 05:04:51.116 +05:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-10-17 05:04:51.118 +05:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-17 05:04:51.120 +05:00 [INF] Request finished HTTP/1.1 GET https://localhost:5255/api/Auth/Customers/ - 403 0 null 9.8838ms
+2025-10-17 05:05:18.351 +05:00 [INF] Request starting HTTP/1.1 GET https://localhost:5255/api/Auth/Customers/5 - null null
+2025-10-17 05:05:18.360 +05:00 [INF] Executing endpoint 'KuroApi.Controllers.AuthController.GetCustomerById (KuroApi)'
+2025-10-17 05:05:18.365 +05:00 [INF] Route matched with {action = "GetCustomerById", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetCustomerById(Int32) on controller KuroApi.Controllers.AuthController (KuroApi).
+2025-10-17 05:05:18.374 +05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT c."Id", c."Email", c."Nickname", c."Password", c."Role"
+FROM "Customers" AS c
+WHERE c."Id" = @__p_0
+LIMIT 1
+2025-10-17 05:05:18.380 +05:00 [INF] Executing OkObjectResult, writing value of type 'KuroApi.Models.Customer'.
+2025-10-17 05:05:18.383 +05:00 [INF] Executed action KuroApi.Controllers.AuthController.GetCustomerById (KuroApi) in 13.455ms
+2025-10-17 05:05:18.385 +05:00 [INF] Executed endpoint 'KuroApi.Controllers.AuthController.GetCustomerById (KuroApi)'
+2025-10-17 05:05:18.388 +05:00 [INF] Request finished HTTP/1.1 GET https://localhost:5255/api/Auth/Customers/5 - 200 null application/json; charset=utf-8 42.2439ms
+2025-10-17 05:05:38.067 +05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:5255/api/Auth/customers/5 - null null
+2025-10-17 05:05:38.071 +05:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-10-17 05:05:38.074 +05:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-17 05:05:38.076 +05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:5255/api/Auth/customers/5 - 403 0 null 9.0774ms
+2025-10-17 05:06:07.189 +05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:5255/api/Auth/Customers/5 - null null
+2025-10-17 05:06:07.194 +05:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-10-17 05:06:07.196 +05:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-17 05:06:07.198 +05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:5255/api/Auth/Customers/5 - 403 0 null 11.6693ms
+2025-10-17 05:06:12.568 +05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:5255/api/Auth/Customers/6 - null null
+2025-10-17 05:06:12.574 +05:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-10-17 05:06:12.576 +05:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-17 05:06:12.578 +05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:5255/api/Auth/Customers/6 - 403 0 null 9.8321ms
+2025-10-17 05:06:17.762 +05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:5255/api/Auth/Customers/5 - null null
+2025-10-17 05:06:17.769 +05:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-10-17 05:06:17.771 +05:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-17 05:06:17.774 +05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:5255/api/Auth/Customers/5 - 403 0 null 11.3518ms
+2025-10-17 05:06:39.323 +05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:5255/api/Auth/Customers/5 - null null
+2025-10-17 05:06:39.330 +05:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-10-17 05:06:39.332 +05:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-17 05:06:39.334 +05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:5255/api/Auth/Customers/5 - 403 0 null 11.2285ms
+2025-10-17 05:07:29.336 +05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:5255/api/Auth/customers/5 - null null
+2025-10-17 05:07:29.344 +05:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-10-17 05:07:29.353 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-10-17 05:07:29.355 +05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:5255/api/Auth/customers/5 - 401 0 null 18.8682ms
+2025-10-17 05:07:37.284 +05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:5255/api/Auth/customers/5 - null null
+2025-10-17 05:07:37.289 +05:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-10-17 05:07:37.293 +05:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-17 05:07:37.295 +05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:5255/api/Auth/customers/5 - 403 0 null 10.9217ms
