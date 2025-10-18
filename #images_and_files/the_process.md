@@ -1,8 +1,8 @@
 # web-service development midterm task
 
-## in here i show my process/progress in the making of this project and fulfilling its requirements
-
-Table of contents
+## in here i show my process/progress in the making of this project and fulfilling its requirements  
+!!! The list of **_Tools_** and **_Packages_** are listed in [README.md](https://github.com/K0d0ku/web-serv_midterm/blob/master/README.md)  
+Table of contents  
 - [Requirements](#requirements)
 - [Process](#process)
   - [1. Implementation of CRUD operations using the REST architectural style](#1-implementation-of-crud-operations-using-the-rest-architectural-style)
@@ -14,7 +14,8 @@ Table of contents
     - [3.1. Using HTTPClient (or its analogues) in the WEB part (possibly ASP.NET Core or other solutions)](#31-using-httpclient-or-its-analogues-in-the-web-part-possibly-aspnet-core-or-other-solutions)
     - [3.2. Using Postman or other analogues](#32-using-postman-or-other-analogues)
   - [4. Implementation of API authorization (JWT or other options)](#4-implementation-of-api-authorization-jwt-or-other-options)
-  - [5. Implementation of Authentication and Authorization in an application using Identity](#5-implementation-of-authentication-and-authorization-in-an-application-using-identity)
+  - [5. Implementation of Authentication and Authorization in an application using Identity](#5-implementation-of-authentication-and-authorization-in-an-application-using-identity)  
+- [Additional content](#additional-content)
 
 ## Requirements
 i was given a list of requirements to make the project by following it so i can pass my midterm  
@@ -33,6 +34,7 @@ and following that list i have fulfilled the needed job to do:
 5. Implementation of Authentication and Authorization in an application using Identity - ✅  
 
 ## Process
+I kinda had a bit of experience with .Net Maui and made an android app with a Local Database that also includes some of the requirements like: CRUD, DataAnnotation etc. from this project: [Link🔗](https://github.com/K0d0ku/cloud_app_dev_exam_project)  
 
 ### 1. Implementation of CRUD operations using the REST architectural style  
 
@@ -307,6 +309,20 @@ _logger.LogInformation("Login successful for email {Email}", login.Email);
 _logger.LogInformation("Fetching all customers");
 _logger.LogInformation("Customer with ID {CustomerId} updated successfully", id);
 _logger.LogInformation("Customer with ID {CustomerId} deleted successfully", id);
+```
+Additional proof of serilog loggin files in:
+ - ↳Logs
+   - ↳ [log-20251017.txt](https://github.com/K0d0ku/web-serv_midterm/blob/master/logs/log-20251017.txt)
+```
+2025-10-17 05:07:29.344 +05:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-10-17 05:07:29.353 +05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-10-17 05:07:29.355 +05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:5255/api/Auth/customers/5 - 401 0 null 18.8682ms
+2025-10-17 05:07:37.284 +05:00 [INF] Request starting HTTP/1.1 DELETE https://localhost:5255/api/Auth/customers/5 - null null
+2025-10-17 05:07:37.289 +05:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2025-10-17 05:07:37.293 +05:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-10-17 05:07:37.295 +05:00 [INF] Request finished HTTP/1.1 DELETE https://localhost:5255/api/Auth/customers/5 - 403 0 null 10.9217ms
 ```  
   
 ### 2.2. Repository Pattern  
@@ -620,7 +636,10 @@ This enforces fine-grained role-based access control.
 ```
 Swagger UI now includes an “Authorize” button, where users can paste their JWT token.  
 Once authenticated, it automatically adds the token to every subsequent request in Swagger.  
-  
+
+**Additional image of JWT Bearer Token Authorization in Postman:***  
+![JWTPostmanTest](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/ApiTestCrud2.png)  
+    
 ### 5. Implementation of Authentication and Authorization in an application using Identity  
 This part of the project handles user authentication and role-based authorization through the ASP.NET Core Identity system, integrated with JWT authentication.  
 Identity provides a built-in membership system with:  
@@ -799,6 +818,31 @@ This is where Identity meets stateless API security.
 
 ```  
  - [Authorize] requires any authenticated user.  
- - Logic inside checks if the user matches the ID or has Admin role.  
+ - Logic inside checks if the user matches the ID or has Admin role.
  - Prevents one user from reading another user’s profile.  
 This demonstrates fine-grained access control combining Identity roles with JWT claims.
+  
+### Additional content  
+Most of the image and files content is located in: [↳Images and Files](https://github.com/K0d0ku/web-serv_midterm/tree/master/%23images_and_files) folder  
+
+#### Database scheme auto generated with DataAnnotation  
+![KuroApiDB](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/KuroApiDb.png)  
+A customer table auto generated and auto updated with DataAnnotation and [AuthController.cs](https://github.com/K0d0ku/web-serv_midterm/blob/master/Controllers/AuthController.cs):  
+![CustomerTable](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/customerSchemeDb.png)  
+DataBase Migration Table:  
+![DbMigrations](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/DbMigrations.png)  
+User Roles and its ID Table:  
+![](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/UserRoles.png)  
+
+#### JWT Bearer Token and Identity Auth in Postman
+![1](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/JWTBearerAuth.png)  
+![2](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/JWTBearerAuth2.png)
+![3](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/JWTBearerAuth3.png)
+
+#### Api test in Swagger
+> the size of the images are too big `(1920x6480)` so its just a link here
+- [KuroApiNoAdminTest](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/KuroApiNoAdminTest.png)  
+- [KuroApiAdminTest](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/KuroApiAdminTest.png)
+
+#### Roadmap i made in .word
+[1st-midterm.docx](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/1st-midterm.docx)
