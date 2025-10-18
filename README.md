@@ -4,7 +4,7 @@
 it is unknown if the project will be continued or abandoned if there wont be any further tasks after midterm but either way will be archived after the semester   
 
 ## the process  
-you can see the process of making this project here in the : [the_process.md](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/the_process.md) `(have to see if you are my professor)`  
+you can see the process of making this project here in the : [the_process.md](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/the_process.md) `(it is mandatory to check)`  
 
 ## the project is made with the following requirements:  
 ![requirements](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/requirements.png)  
