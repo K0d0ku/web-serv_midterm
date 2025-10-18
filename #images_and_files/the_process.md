@@ -4,7 +4,17 @@
 
 Table of contents
 - [Requirements](#requirements)
-- [Process](process)
+- [Process](#process)
+  - [1. Implementation of CRUD operations using the REST architectural style](#1-implementation-of-crud-operations-using-the-rest-architectural-style)
+    - [1.1. Implementation of validation (DataAnnotation, FluentAPI)](1.1.-Implementation-of-validation-DataAnnotation,-FluentAPI)
+  - [2. Implementation of Dependency Injection](2.-Implementation-of-Dependency-Injection)
+    - [2.1. Logging (Seq, Serilog)](2.1.-Logging-Seq,-Serilog)
+    - [2.2. Repository Pattern](2.2.-Repository-Pattern)
+  - [3. API testing](#3.-API-testing)
+    - [3.1. Using HTTPClient (or its analogues) in the WEB part (possibly ASP.NET Core or other solutions)](#3.1.-Using-HTTPClient-(or-its-analogues)-in-the-WEB-part-(possibly-ASP.NET-Core-or-other-solutions))
+    - [3.2. Using Postman or other analogues](#3.2.-Using-Postman-or-other-analogues)
+  - [4. Implementation of API authorization (JWT or other options)](#4.-Implementation-of-API-authorization (JWT or other options))
+  - [5. Implementation of Authentication and Authorization in an application using Identity](#5.-Implementation-of-Authentication-and-Authorization-in-an-application-using-Identity)
 
 ## Requirements
 i was given a list of requirements to make the project by following it so i can pass my midterm  
@@ -252,8 +262,8 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 })
 .AddEntityFrameworkStores<AppDbContext>()
 .AddDefaultTokenProviders();
-```
-How controllers consume services (example from [AuthController]((https://github.com/K0d0ku/web-serv_midterm/blob/c67fe31b22bd8da1505ffbeda6b870939c785728/Controllers/AuthController.cs#L15-L26))):  
+```  
+#### How controllers consume services (example from [AuthController](https://github.com/K0d0ku/web-serv_midterm/blob/c67fe31b22bd8da1505ffbeda6b870939c785728/Controllers/AuthController.cs#L15-L26) ):  
 ```
 public class AuthController : ControllerBase
 {
@@ -290,7 +300,7 @@ builder.Host.UseSerilog();
  - Creates a global Serilog logger and instructs the host to use Serilog as the logging provider.  
  - Two sinks are configured: console output and daily rolling file logs/log-YYYYMMDD.txt.
 
-How controllers write logs (example snippets from [AuthController](https://github.com/K0d0ku/web-serv_midterm/blob/master/Controllers/AuthController.cs):  
+#### How controllers write logs (example snippets from [AuthController](https://github.com/K0d0ku/web-serv_midterm/blob/master/Controllers/AuthController.cs):  
 ```
 _logger.LogInformation("Customer registered successfully: {CustomerId}", customer.Id);
 _logger.LogInformation("Login successful for email {Email}", login.Email);
@@ -397,9 +407,398 @@ public void Delete(int id) { ... }
 ```  
   
 ### 3. API testing  
-### 3.1. Using HTTPClient (or its analogues) in the WEB part (possibly ASP.NET Core or other solutions) - ✅  
-### 3.2. Using Postman or other analogues - ✅  
+You can find a lot of pictures as proof of Api Testing in [↳ Images and Files](https://github.com/K0d0ku/web-serv_midterm/tree/master/%23images_and_files) folder of the repository  
 
-### 4. Implementation of API authorization (JWT or other options) - ✅  
+### 3.1. Using HTTPClient (or its analogues) in the WEB part (possibly ASP.NET Core or other solutions)  
+For HTTPCLient or its analogues i used the ASP.NET's built in **_Swagger_** to test the api, `it also contains the authorization from №4th and №5th requirements for the project`.  
+Here are the images:
+- ![Swagger Test](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/apiTestSwagger.png)  
+**The rest of the images are just the link cause they are the full Scroll screenshots that also include the full **_CRUD_** phase of all**  
+- [KuroApiNoAdminTest](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/KuroApiNoAdminTest.png)  
+- [KuroApiAdminTest](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/KuroApiAdminTest.png)
 
-### 5. Implementation of Authentication and Authorization in an application using Identity - ✅  
+### 3.2. Using Postman or other analogues  
+For external API Test i used the Postman's desktop app to test and you've already seen its screenshots above many times, and here are couple of them `which btw also contains auth part too`.  
+![PostmanTest](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/ApiTestCrud2.png)  
+![PostmanTest](https://github.com/K0d0ku/web-serv_midterm/blob/master/%23images_and_files/ApiTestCrud3After.png)  
+  
+### 4. Implementation of API authorization (JWT or other options)  
+#### JWT Configuration in: 
+[Program.cs](https://github.com/K0d0ku/web-serv_midterm/blob/master/Program.cs)  
+```
+// swagger with JWT authorization
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "KuroApi", Version = "v1" });
+
+    // JWT auth config
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization header using the Bearer scheme. Example: 'Bearer {token}'",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
+
+
+// JWT authentication
+var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+var key = Encoding.ASCII.GetBytes(jwtSettings["Secret"]);
+
+builder.Services
+    .AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        options.RequireHttpsMetadata = false;
+        options.SaveToken = true;
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = jwtSettings["Issuer"],
+            ValidAudience = jwtSettings["Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(key),
+            ClockSkew = TimeSpan.Zero
+        };
+    });
+
+// auth
+builder.Services.AddAuthorization();
+```
+- Configures the app to accept only valid JWT tokens.  
+- Enforces token signature validation (using the secret key).  
+- Checks issuer, audience, and token expiry.  
+- Hooks into the Authentication and Authorization middleware pipeline.  
+  
+Then later in the pipeline:
+```
+app.UseAuthentication();
+app.UseAuthorization();
+```
+This ensures every request passes through JWT validation before hitting a controller.  
+
+#### JWT Settings in [appsettings.json](https://github.com/K0d0ku/web-serv_midterm/blob/f3136998e647d2d851db9df3c47a50099d80c48c/appsettings.json#L6-L11)  
+```
+"JwtSettings": {
+    "Secret": "Fuckass41longsecret63myahh69RequiringMeToLenghtenThisFuckassSecret696969!",
+    "Issuer": "KuroApi",
+    "Audience": "KuroApiUsers",
+    "ExpiryMinutes": 60
+  }
+```
+ - Defines the secret key used to sign the JWT.  
+ - Sets the issuer and audience to validate token origin and destination.  
+ - Defines expiry time for token validity.
+  
+#### Token Generation — [AuthController.cs](https://github.com/K0d0ku/web-serv_midterm/blob/f3136998e647d2d851db9df3c47a50099d80c48c/Controllers/AuthController.cs#L48-L87)
+```
+// login & JWT 
+        [HttpPost("login")]
+        [AllowAnonymous]
+        public IActionResult Login([FromBody] Customer login)
+        {
+            var customer = _repository.GetAll()
+                .FirstOrDefault(c => c.Email == login.Email && c.Password == login.Password);
+
+            if (customer == null)
+                return Unauthorized(new { Message = "Invalid credentials" });
+
+            var jwtSettings = _configuration.GetSection("JwtSettings");
+            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings["Secret"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var claims = new[]
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, customer.Email),
+                new Claim(ClaimTypes.Role, customer.Role),
+                new Claim("Id", customer.Id.ToString())
+            };
+
+            var token = new JwtSecurityToken(
+                issuer: jwtSettings["Issuer"],
+                audience: jwtSettings["Audience"],
+                claims: claims,
+                expires: DateTime.UtcNow.AddMinutes(double.Parse(jwtSettings["ExpiryMinutes"])),
+                signingCredentials: creds
+            );
+
+            var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+
+            _logger.LogInformation("Login successful for email {Email}", login.Email);
+            return Ok(new
+            {
+                Token = tokenString,
+                Expires = DateTime.UtcNow.AddMinutes(double.Parse(jwtSettings["ExpiryMinutes"])),
+                Role = customer.Role
+            });
+        }
+```
+ - Creates claims:  
+   - sub → Email (standard claim)  
+   - role → User role (Admin, Customer, etc.)  
+   - Id → User ID  
+ - Signs the token with HmacSha256 using the configured secret key.  
+ - Returns it to the client on successful login.  
+The client then uses this token in the Authorization header:  
+Authorization: Bearer `<token>`  
+
+#### Securing Endpoints with [Authorize]:  
+[AuthController.cs](https://github.com/K0d0ku/web-serv_midterm/blob/master/Controllers/AuthController.cs)
+```
+ [HttpGet("customers")]
+        [Authorize(Roles = "Admin")]
+        public IActionResult GetAllCustomers()
+
+
+[HttpGet("customers/{id}")]
+        [Authorize] 
+        public IActionResult GetCustomerById(int id)
+
+
+[HttpPut("customers/{id}")]
+        [Authorize] 
+        public IActionResult UpdateCustomer(int id, [FromBody] Customer updatedCustomer)
+
+
+[HttpDelete("customers/{id}")]
+        [Authorize(Roles = "Admin")] 
+        public IActionResult DeleteCustomer(int id)
+```  
+ - [Authorize] → endpoint requires a valid JWT.  
+ - [Authorize(Roles = "Admin")] → requires both a valid JWT and role claim of Admin.  
+ - Users with Customer role can only access their own data:
+   - ```
+            var userId = User.FindFirst("Id")?.Value;
+            if (!User.IsInRole("Admin") && userId != customer.Id.ToString())
+                return Forbid();
+     ```  
+This enforces fine-grained role-based access control.  
+  
+#### Integration with Swagger  
+[Program.cs](https://github.com/K0d0ku/web-serv_midterm/blob/f3136998e647d2d851db9df3c47a50099d80c48c/Program.cs#L40-L59)  
+```
+// JWT auth config
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization header using the Bearer scheme. Example: 'Bearer {token}'",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+            },
+            Array.Empty<string>()
+        }
+    });
+```
+Swagger UI now includes an “Authorize” button, where users can paste their JWT token.  
+Once authenticated, it automatically adds the token to every subsequent request in Swagger.  
+  
+### 5. Implementation of Authentication and Authorization in an application using Identity  
+This part of the project handles user authentication and role-based authorization through the ASP.NET Core Identity system, integrated with JWT authentication.  
+Identity provides a built-in membership system with:  
+ - User management (registration, password hashing, etc.)  
+ - Role-based access control  
+ - Token providers for authentication flows  
+In this project, Identity is used alongside JWT to enable secure API access and role restriction between Admin and Customer users.  
+
+#### Identity User Model
+[AppUser.cs](https://github.com/K0d0ku/web-serv_midterm/blob/f3136998e647d2d851db9df3c47a50099d80c48c/Models/AppUser.cs#L1-L10)
+```
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace KuroApi.Models
+{
+    public class AppUser : IdentityUser
+    {
+        public string Nickname { get; set; } = string.Empty;
+        public string Role { get; set; } = "Customer";
+    }
+}
+```
+ - Inherits from IdentityUser (built-in Identity class).  
+ - Adds two custom properties:  
+   - Nickname — friendly display name.  
+   - Role — default role assigned to users is Customer.  
+ - This enables the Identity system to work with our custom application data.  
+It is the core identity entity, used when creating accounts and associating roles.  
+
+#### Database Context Integration
+[AppDbContext.cs](https://github.com/K0d0ku/web-serv_midterm/blob/master/Data/AppDbContext.cs)  
+```
+﻿using Microsoft.EntityFrameworkCore;
+using KuroApi.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
+namespace KuroApi.Data
+{
+    public class AppDbContext : IdentityDbContext<AppUser>
+    {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+        public DbSet<Customer> Customers { get; set; }
+    }
+}
+```  
+ - Inherits from IdentityDbContext<AppUser> which sets up:  
+   - Identity tables (AspNetUsers, AspNetRoles, AspNetUserRoles, etc.)  
+   - Relationships between users, roles, and claims.  
+ - The project also keeps a separate Customer entity to support legacy / additional business logic.  
+Identity tables and customer data coexist in the same PostgreSQL database.  
+
+#### Identity Configuration
+[Program.cs](https://github.com/K0d0ku/web-serv_midterm/blob/f3136998e647d2d851db9df3c47a50099d80c48c/Program.cs#L70-L79)
+```
+// identity
+builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+{
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireDigit = false;
+    options.Password.RequiredLength = 6;
+})
+.AddEntityFrameworkStores<AppDbContext>()
+.AddDefaultTokenProviders();
+```  
+ - AddIdentity<AppUser, IdentityRole> registers the Identity system.  
+ - Configures password requirements (weaker here for simplicity).  
+ - Links Identity to our AppDbContext.  
+ - Adds token providers for authentication flows.  
+It enables the use of UserManager, RoleManager, and Identity middleware out of the box.  
+
+#### Role Seeding (Admin / Customer)
+[Program.cs](https://github.com/K0d0ku/web-serv_midterm/blob/f3136998e647d2d851db9df3c47a50099d80c48c/Program.cs#L114-L142)
+```
+// for now i seed a temp admin 
+using (var scope = app.Services.CreateScope())
+{
+    var repo = scope.ServiceProvider.GetRequiredService<ICustomerRepository>();
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+    async Task SeedRolesAndAdminAsync()
+    {
+        var roles = new[] { "Customer", "Admin" };
+        foreach (var role in roles)
+        {
+            if (!await roleManager.RoleExistsAsync(role))
+                await roleManager.CreateAsync(new IdentityRole(role));
+        }
+
+        if (!repo.ExistsByEmail("admin@example.com"))
+        {
+            var admin = new Customer
+            {
+                Nickname = "Admin",
+                Email = "admin@example.com",
+                Password = "Admin123!",
+                Role = "Admin"
+            };
+            repo.Add(admin);
+        }
+    }
+
+    await SeedRolesAndAdminAsync();
+}
+```  
+ - Creates default roles: Customer and Admin.  
+ - Seeds an initial admin account if not present.  
+ - This ensures access control can be tested right away.  
+Admin role has full access, Customer role has limited access.  
+
+#### Integration with JWT Authentication
+[Program.cs](https://github.com/K0d0ku/web-serv_midterm/blob/f3136998e647d2d851db9df3c47a50099d80c48c/Program.cs#L82-L106)
+```
+// JWT authentication
+var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+var key = Encoding.ASCII.GetBytes(jwtSettings["Secret"]);
+
+builder.Services
+    .AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(options =>
+    {
+        options.RequireHttpsMetadata = false;
+        options.SaveToken = true;
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = jwtSettings["Issuer"],
+            ValidAudience = jwtSettings["Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(key),
+            ClockSkew = TimeSpan.Zero
+        };
+    });
+```  
+ - Configures JWT authentication.  
+ - Validates issuer, audience, and signing key.  
+ - Identity users can authenticate and receive JWT tokens upon login.  
+This is where Identity meets stateless API security.
+
+#### Authorization with Roles
+[AuthController.cs](https://github.com/K0d0ku/web-serv_midterm/blob/master/Controllers/AuthController.cs)
+```
+[HttpPost("register")]
+        [AllowAnonymous]
+        public IActionResult Register([FromBody] Customer customer)
+```  
+ -  [AllowAnonymous] doesnt require anything in the context of registration it fits perfect  
+***  
+```
+ [HttpGet("customers")]
+        [Authorize(Roles = "Admin")]
+        public IActionResult GetAllCustomers()
+
+[HttpDelete("customers/{id}")]
+        [Authorize(Roles = "Admin")] 
+        public IActionResult DeleteCustomer(int id)
+```  
+ - [Authorize(Roles = "Admin")] restricts access to Admins only.  
+ - Non-admins will get a 403 Forbidden response.  
+***  
+```
+[HttpPut("customers/{id}")]
+        [Authorize] 
+        public IActionResult UpdateCustomer(int id, [FromBody] Customer updatedCustomer)
+
+[HttpGet("customers/{id}")]
+        [Authorize] 
+        public IActionResult GetCustomerById(int id)
+
+```  
+ - [Authorize] requires any authenticated user.  
+ - Logic inside checks if the user matches the ID or has Admin role.  
+ - Prevents one user from reading another user’s profile.  
+This demonstrates fine-grained access control combining Identity roles with JWT claims.
